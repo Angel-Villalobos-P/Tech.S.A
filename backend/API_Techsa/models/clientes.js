@@ -9,7 +9,7 @@ module.exports = (sequelize, type) => {
         correo: type.STRING(50),
         direccion: type.STRING(100),
         usuario: type.STRING(30),
-        contrasena: type.STRING(30) 
+        contrasena: type.STRING
     })
 
 }
