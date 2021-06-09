@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
+const { check, validationResult } = require('express-validator');
 const {usuario} = require('../../db');
 
 //Insert

@@ -66,4 +66,26 @@ router.delete('/:id', async (req, res) => {
     
 });
 
+
+router.post('/login', async (req, res, next) => {
+    try {
+        const user = await cliente.findOne({ where: { correo: req.body.correo } });
+        if(user){
+            const iguales = bcrypt.compareSync(req.body.contrasena, user.contrasena);
+            if(iguales){
+                res.json({ error: 'Correcto' }); 
+            }else{
+                res.json({ error: 'Error en el usuario y/o contraseña' }); 
+            }
+        }else{
+            res.json({ error: 'Error en el usuario y/o contraseña' }); 
+        }
+        next();
+    } catch (error) {
+        console.log(error);
+        next();
+    }
+    
+});
+
 module.exports = router;
