@@ -13,12 +13,6 @@ import { CelularCard } from './components/CelularCard';
 import { Context } from '../src/store/appContext';
 
 function App() {
-
-  // const [telefonia_fija, setTelefonia_fija] = useState([]);
-  // const [internet, setInternet] = useState([]);
-  // const [telefonia_movil, setTelefonia_movil] = useState([]);
-  // const [celulares, setCelulares] = useState([]);
-
   const { store, actions } = useContext(Context);
 
   const telefonia_fija = store.telefonia_fija;
@@ -26,48 +20,6 @@ function App() {
   const telefonia_movil = store.telefonia_movil;
   const celulares = store.celulares;
 
-  // useEffect(() => {
-  //   const getInternet = () => {
-  //     clienteAxios.get('/internet')
-  //       .then(respuesta => {
-  //         console.log('=====>> ', respuesta.data);
-  //         setInternet(respuesta.data);
-  //       }).catch(error => {
-  //         console.log(error)
-  //       })
-  //   }
-  //   getInternet();
-
-  //   const getTelefonia_fija = () => {
-  //     clienteAxios.get('/telfija')
-  //       .then(respuesta => {
-  //         setTelefonia_fija(respuesta.data);
-  //       }).catch(error => {
-  //         console.log(error)
-  //       })
-  //   }
-  //   getTelefonia_fija();
-
-  //   const getTelefonia_movil = () => {
-  //     clienteAxios.get('/telmovil')
-  //       .then(respuesta => {
-  //         setTelefonia_movil(respuesta.data);
-  //       }).catch(error => {
-  //         console.log(error)
-  //       })
-  //   }
-  //   getTelefonia_movil();
-
-  //   const getCelulares = () => {
-  //     clienteAxios.get('/celular')
-  //       .then(respuesta => {
-  //         setCelulares(respuesta.data);
-  //       }).catch(error => {
-  //         console.log(error)
-  //       })
-  //   }
-  //   getCelulares();
-  // }, [])
 
   return (
     <div className="App">
@@ -94,8 +46,8 @@ function App() {
             <div className="row">
               {!!internet && internet.map((plan, i) => {
                 return (
-                  <div className="col" key={i}>
-                    <PlanCard nombre={plan.nombre} velocidad={plan.velocidad} precio={plan.precio} />
+                  <div className="col-3" key={i}>
+                    <PlanCard idInternet={plan.idInternet} nombre={plan.nombre} velocidad={plan.velocidad} precio={plan.precio} />
                   </div>
                 );
               })}
@@ -108,7 +60,7 @@ function App() {
             <div className="row">
               {!!telefonia_fija && telefonia_fija.map((plan, i) => {
                 return (
-                  <div className="col" key={i} >
+                  <div className="col-3" key={i} >
                     <TelFijaCard nombre={plan.nombre} descripcion={plan.descripcion} minutos={plan.minutos} tarifa={plan.tarifa} costoMinutos={plan.costoMinutos} />
                   </div>
                 );
@@ -123,7 +75,7 @@ function App() {
           <div className="row">
             {!!telefonia_movil && telefonia_movil.map((plan, i) => {
               return (
-                <div className="col" key={i} >
+                <div className="col-3" key={i} >
                   <TelMovilCard nombre={plan.nombre} descripcion={plan.descripcion} tipo={plan.tipo} precio={plan.precio} />
                 </div>
               );
@@ -137,7 +89,7 @@ function App() {
           <div className="row">
             {!!celulares && celulares.map((celular, i) => {
               return (
-                <div className="col" key={i} >
+                <div className="col-3" key={i} >
                   <CelularCard marca={celular.marca} modelo={celular.modelo} color={celular.color} almacenamiento={celular.almacenamiento} ram={celular.ram}
                     descripcion={celular.descripcion} precio={celular.precio} stock={celular.stock} />
                 </div>

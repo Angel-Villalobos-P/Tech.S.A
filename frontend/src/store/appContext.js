@@ -33,6 +33,10 @@ const injectContext = PassedComponent => {
             state.actions.getCelulares();
             state.actions.getUsuarios();
             state.actions.getClientes();
+            state.actions.getContratosPlanes();
+            state.actions.getContratos();
+            // state.actions.setSesionActual()
+            console.log(localStorage.getItem('sesionActual'));
         }, []);
 
         // The initial value for the context is not null anymore, but the current state of this component,

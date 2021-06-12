@@ -11,6 +11,7 @@ export const LogIn = () => {
 
     const { store, actions } = useContext(Context);
     const [redirect, setRedirect] = useState(false);
+    const [redirectAdmin, setRedirectAdmin] = useState(false);
     const [alert, setAlert] = useState(false);
     // const [cliente, setCliente] = useState([]);
     // const [usuario, setUsuario] = useState([]);
@@ -23,36 +24,15 @@ export const LogIn = () => {
         idlaboral: 0
     });
 
-    // useEffect(() => {
-    //     const getUsuario = () => {
-    //         clienteAxios.get('/usuario')
-    //             .then(respuesta => {
-    //                 console.log('=====>> ', respuesta.data);
-    //                 setUsuario(respuesta.data);
-    //             }).catch(error => {
-    //                 console.log(error)
-    //             })
-    //     }
-    //     getUsuario();
-
-    //     const getCliente = () => {
-    //         clienteAxios.get('/cliente')
-    //             .then(respuesta => {
-    //                 console.log('=====>> ', respuesta.data);
-    //                 setCliente(respuesta.data);
-    //             }).catch(error => {
-    //                 console.log(error)
-    //             })
-    //     }
-    //     getCliente();
-    // }, [])
-
     const handleChange = (e) => {
         setDatos({
             ...datos,
             [e.target.name]: e.target.value,
         });
     }
+
+    //Maneja el valor del checkbox para cuando 
+    //inicia un Administrador o agente de ventas
     const handleChangeCheckBox = (e) => {
         setDatos({
             ...datos,
@@ -74,13 +54,13 @@ export const LogIn = () => {
         return true;
     }
 
+    //Si no se ingresan todos los datos del formulario
     const validarUsuario = () => {
         if (!validarDatos()) {
             Swal.fire({
                 icon: 'error',
-                title: 'Oops...',
-                text: 'Something went wrong!',
-                footer: '<a href="">Why do I have this issue?</a>'
+                title: 'Error',
+                text: 'Debe ingresar todos los datos'
             });
             return;
         }
@@ -88,30 +68,30 @@ export const LogIn = () => {
 
             usuario.forEach(user => {
                 if (user.idLaboral === parseInt(datos.idlaboral) && user.contrasena === datos.contrasena) {
-                    setRedirect(true);
+                    localStorage.setItem('sesionActual', JSON.stringify(user));
+                    setRedirectAdmin(true);
+                    actions.setSesionActual(user);
                     return;
                 } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Datos erróneos'
-                    })
+                    // Swal.fire({
+                    //     icon: 'error',
+                    //     title: 'Oops...',
+                    //     text: 'Datos erróneos'
+                    // })
+                    setAlert(true);
                 }
             });
-        } else {
+        } else { //inicio de sesion del cliente
             if (cliente.length != 0) {
                 cliente.forEach(cliente => {
                     if (cliente.correo === datos.correo && cliente.contrasena === datos.contrasena) {
                         //redirect
+                        localStorage.setItem('sesionActual', JSON.stringify(cliente));
                         setRedirect(true);
+                        actions.setSesionActual(cliente);
                         // return true;
                     }
                     else {
-                        // Swal.fire({
-                        //     icon: 'error',
-                        //     title: 'Oops...',
-                        //     text: 'Datos erróneos===>'
-                        // })
                         setAlert(true);
                     }
                 });
@@ -140,7 +120,7 @@ export const LogIn = () => {
                     <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                         <ul className="navbar-nav">
                             <Link to="/registrarse">
-                                <button type="button" className="btn btn-primary">Registrarse</button>
+                                <button type="button" className="btn btn-success">Registrarse</button>
                             </Link>
                         </ul>
                     </div>
@@ -182,6 +162,7 @@ export const LogIn = () => {
                             <button type="button" className="btn btn-primary" onClick={() => validarUsuario()}>Iniciar sesión</button>
                         </form>
                         {redirect ? <Redirect to="/clientepage" /> : ""}
+                        {redirectAdmin ? <Redirect to="/gestion_planes" /> : ""}
                     </div>
                 </div>
             </div>

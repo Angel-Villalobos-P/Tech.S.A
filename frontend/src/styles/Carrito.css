@@ -1,0 +1,12 @@
+.btn-disminuir {
+    margin-right: 8px;
+}
+
+.btn-aumentar {
+    margin-left: 8px;
+}
+
+hr {
+    height: 5px;
+    border-color: red;
+}

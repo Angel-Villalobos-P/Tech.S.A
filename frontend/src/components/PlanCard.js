@@ -1,16 +1,22 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Context } from '../store/appContext';
+import { Redirect } from "react-router-dom";
 
-export const PlanCard = (props) => {
+export const PlanCard = (props) => {// Internet
 
     const { store, actions } = useContext(Context);
+    const [redirect, setRedirect] = useState(false);
 
     const itemCarrito = (item) => {
         actions.setCarrito2({
             nombre: item.nombre,
             cantidad: 1,
-            precio: item.precio
+            precio: item.precio,
+            id: item.idInternet,
+            tipo:'internet'
         });
+        console.log(item);
+        console.log(props);
     }
 
     return (
@@ -22,10 +28,12 @@ export const PlanCard = (props) => {
                     <p className="card-text">{props.precio}</p>
                 </div>
                 <div className="card-footer bg-transparent border-success">
-                    {/* <button type="button" className="btn btn-primary" onClick={() => actions.setCarrito(props.nombre, props)}>Adqurir</button> */}
-                    <button type="button" className="btn btn-primary" onClick={() => itemCarrito(props)}>Adqurir</button>
+                    {/* <button type="button" className="btn btn-primary" onClick={() => itemCarrito(props)}>Adqurir</button> */}
+                    {store.sesionActual === null ? <button type="button" className="btn btn-primary" onClick={() => setRedirect(true)}>Adqurir</button> :
+                        <button type="button" className="btn btn-primary" onClick={() => itemCarrito(props)}>Adqurir</button>}
                 </div>
             </div>
+            {redirect ? <Redirect to="/ingresar" /> : ""}
         </div>
     )
 }

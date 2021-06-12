@@ -2,17 +2,18 @@ import React, { useContext, useState } from 'react';
 import logo from '../img/logoTech.jpg';
 import { Link } from "react-router-dom";
 import { Context } from '../store/appContext';
+import '../styles/Navbar.css';
 
 export const NavBarCliente = () => {
     const { store, actions } = useContext(Context);
 
     return (
         <div>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav className="barra navbar navbar-expand-lg navbar-dark bg-dark">
                 <div className="container-fluid">
                     <Link to="/">
                         <a className="navbar-brand">
-                            <img src={logo} alt="" style={{ "maxWidth": "30px" }} className="d-inline-block align-text-top" />
+                            <img src={logo} alt="" style={{ "maxWidth": "30px", "marginRight":"5px" }} className="d-inline-block align-text-top" />
                             TECH S.A
                         </a>
                     </Link>
@@ -29,7 +30,7 @@ export const NavBarCliente = () => {
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link to="/zonas">
+                                <Link to="/zonascoberturas">
                                     <a className="nav-link active" aria-current="page" >Zonas de cobertura</a>
                                 </Link>
                             </li>
@@ -52,7 +53,7 @@ export const NavBarCliente = () => {
                             </li>
                             <li className="nav-item">
                                 <Link to="/">
-                                    <button type="button" className="btn btn-primary">Salir</button>
+                                    <button type="button" className="btn btn-success">Salir</button>
                                 </Link>
                             </li>
                         </ul>

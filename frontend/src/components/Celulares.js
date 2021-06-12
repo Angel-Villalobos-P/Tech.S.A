@@ -26,7 +26,7 @@ export const Celulares = () => {
                 <div className="row">
                     {!!celulares && celulares.map((cel, i) => {
                         return (
-                            <div className="col" key={i}>
+                            <div className="col-3" key={i}>
                                 <CelularCard descripcion={cel.descripcion} precio={cel.precio} />
                             </div>
                         );

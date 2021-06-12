@@ -1,8 +1,20 @@
-import Reat, { useContext } from 'react';
+import Reat, { useContext, useState } from 'react';
 import { Context } from '../store/appContext';
+import { Redirect } from "react-router-dom";
 
 export const TelFijaCard = (props) => {
     const { store, actions } = useContext(Context);
+    const [redirect, setRedirect] = useState(false);
+
+    const itemCarrito = (item) => {
+        actions.setCarrito2({
+            nombre: item.nombre,
+            cantidad: 1,
+            precio: item.tarifa,
+            id: item.idTelFija,
+            tipo: 'fija'
+        });
+    }
 
     return (
         <div>
@@ -16,9 +28,12 @@ export const TelFijaCard = (props) => {
                     <p className="card-text">{'Costo por minuto: ' + '¢' + props.costoMinutos}</p>
                 </div>
                 <div className="card-footer bg-transparent border-success">
-                    <button type="button" className="btn btn-primary" onClick={() => actions.setCarrito(props.nombre, props)}>Adqurir</button>
+                    {/* <button type="button" className="btn btn-primary" onClick={() => itemCarrito(props)}>Adqurir</button> */}
+                    {store.sesionActual === null ? <button type="button" className="btn btn-primary" onClick={() => setRedirect(true)}>Adqurir</button> :
+                        <button type="button" className="btn btn-primary" onClick={() => itemCarrito(props)}>Adqurir</button>}
                 </div>
             </div>
+            {redirect ? <Redirect to="/ingresar" /> : ""}
         </div>
     )
 }

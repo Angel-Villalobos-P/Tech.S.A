@@ -12,7 +12,7 @@ export const SignUp = () => {
 
     const [redirect, setRedirect] = useState(false);
     const [datos, setDatos] = useState({
-        idCliente:0,
+        idCliente: 0,
         nombre: '',
         apellidos: '',
         correo: '',
@@ -22,9 +22,10 @@ export const SignUp = () => {
     });
 
     const validarForm = () => {
-        if (datos.nombre === '' || datos.apellidos === '' || datos.correo === '' || datos.direccion === '' || datos.usuario === '' || datos.contrasena === '') {
-            return false;
-        } return true;
+        // if (datos.nombre === '' || datos.apellidos === '' || datos.correo === '' || datos.direccion === '' || datos.usuario === '' || datos.contrasena === '') {
+        //     return false;
+        // } return true;
+        return (datos.nombre === '' || datos.apellidos === '' || datos.correo === '' || datos.direccion === '' || datos.usuario === '' || datos.contrasena === '');
     }
 
     const agregarCliente = () => {

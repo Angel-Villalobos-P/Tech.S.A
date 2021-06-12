@@ -80,8 +80,8 @@ export const ClientePage = () => {
                 <div className="row">
                     {!!internet && internet.map((plan, i) => {
                         return (
-                            <div className="col" key={i}>
-                                <PlanCard nombre={plan.nombre} velocidad={plan.velocidad} precio={plan.precio} />
+                            <div className="col-3" key={i}>
+                                <PlanCard idInternet={plan.idInternet} nombre={plan.nombre} velocidad={plan.velocidad} precio={plan.precio} />
                             </div>
                         );
                     })}
@@ -94,8 +94,8 @@ export const ClientePage = () => {
                 <div className="row">
                     {!!telefonia_fija && telefonia_fija.map((plan, i) => {
                         return (
-                            <div className="col" key={i} >
-                                <TelFijaCard nombre={plan.nombre} descripcion={plan.descripcion} minutos={plan.minutos} tarifa={plan.tarifa} costoMinutos={plan.costoMinutos} />
+                            <div className="col-3" key={i} >
+                                <TelFijaCard idTelFija={plan.idTelFija} nombre={plan.nombre} descripcion={plan.descripcion} minutos={plan.minutos} tarifa={plan.tarifa} costoMinutos={plan.costoMinutos} />
                             </div>
                         );
                     })}
@@ -108,8 +108,8 @@ export const ClientePage = () => {
                 <div className="row">
                     {!!telefonia_movil && telefonia_movil.map((plan, i) => {
                         return (
-                            <div className="col" key={i} >
-                                <TelMovilCard nombre={plan.nombre} descripcion={plan.descripcion} tipo={plan.tipo} precio={plan.precio} />
+                            <div className="col-3" key={i} >
+                                <TelMovilCard idTelMovil={plan.idTelMovil} nombre={plan.nombre} descripcion={plan.descripcion} tipo={plan.tipo} precio={plan.precio} />
                             </div>
                         );
                     })}
@@ -122,8 +122,8 @@ export const ClientePage = () => {
                 <div className="row">
                     {!!celulares && celulares.map((celular, i) => {
                         return (
-                            <div className="col" key={i} >
-                                <CelularCard marca={celular.marca} modelo={celular.modelo} color={celular.color} almacenamiento={celular.almacenamiento} ram={celular.ram}
+                            <div className="col-3" key={i} >
+                                <CelularCard idCelular={celular.idCelular} marca={celular.marca} modelo={celular.modelo} color={celular.color} almacenamiento={celular.almacenamiento} ram={celular.ram}
                                     descripcion={celular.descripcion} precio={celular.precio} stock={celular.stock} />
                             </div>
                         );
