@@ -11,6 +11,7 @@ const apiContratoCelularRouter = require('./api/contratoCelulares');
 const apiContratoInternetRouter = require('./api/contratoInternet');
 const apiContratoFijaRouter = require('./api/contratoFija');
 const apiContratoMovilRouter = require('./api/contratoMovil');
+const apiLoginRouter = require('./api/login');
 
 router.use('/cliente', apiClienteRouter);
 router.use('/usuario', apiUsuarioRouter);
@@ -23,5 +24,6 @@ router.use('/ccelular', apiContratoCelularRouter);
 router.use('/cinternet', apiContratoInternetRouter);
 router.use('/ctelfija', apiContratoFijaRouter);
 router.use('/ctelmovil', apiContratoMovilRouter);
+router.use('/login', apiLoginRouter);
 
 module.exports = router;

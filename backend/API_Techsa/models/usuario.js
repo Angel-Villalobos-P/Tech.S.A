@@ -8,7 +8,7 @@ module.exports = (sequelize, type) => {
             primaryKey: true
         },
         puesto: type.STRING(15),
-        contrasena: type.STRING(30) 
+        contrasena: type.STRING
     })
 
 }
