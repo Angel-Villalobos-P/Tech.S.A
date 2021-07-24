@@ -6,6 +6,6 @@ module.exports = (sequelize, type) => {
             autoIncrement: true
         },
         pago: type.DECIMAL(10, 2)
-    })
+    });
 
 }

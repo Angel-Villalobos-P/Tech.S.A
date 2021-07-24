@@ -12,7 +12,7 @@ const ContratoInternetModel = require('./models/contratoInternet');
 const ContratoFijaModel = require('./models/contratoFija');
 const ContratoMovilModel = require('./models/contratoMovil');
 
-const sequelize = new Sequelize('db_techsa', 'root', 'fung123', {
+const sequelize = new Sequelize('techsa', 'root', 'rootangel', {
     host: '127.0.0.1',
     port: '3306',
     dialect: 'mysql',

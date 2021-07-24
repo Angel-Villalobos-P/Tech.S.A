@@ -5,8 +5,7 @@ module.exports = (sequelize, type) => {
         apellidos: type.STRING(50),
         idLaboral: {
             type: type.INTEGER,
-            primaryKey: true,
-            autoIncrement: true
+            primaryKey: true
         },
         puesto: type.STRING(15),
         contrasena: type.STRING(30) 

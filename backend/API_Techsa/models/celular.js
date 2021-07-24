@@ -11,7 +11,8 @@ module.exports = (sequelize, type) => {
         almacenamiento: type.INTEGER,
         ram: type.INTEGER,
         descripcion: type.STRING,
-        precio: type.DECIMAL(10, 2)
+        precio: type.DECIMAL(10, 2),
+        stock: type.INTEGER,
     })
 
 }

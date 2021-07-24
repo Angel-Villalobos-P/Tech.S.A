@@ -6,7 +6,7 @@ const {cliente} = require('../../db');
 router.post('/', async (req, res) => {
     try {
         const clientes = await cliente.create(req.body);
-        res.json(clientes); 
+        res.json(clientes);
     } catch (error) {
         console.log(error);
         next();

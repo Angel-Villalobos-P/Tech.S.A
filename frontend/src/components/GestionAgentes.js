@@ -143,6 +143,10 @@ export const GestionAgentes = () => {
                                             <input type="text" name="apellidos" value={agenteVentas.apellidos} onChange={handleChange} className="form-control" aria-describedby="emailHelp" />
                                         </div>
                                         <div className="mb-3">
+                                            <label className="form-label">Cédula:</label>
+                                            <input type="number" name="idUsuario" value={agenteVentas.idUsuario} onChange={handleChange} className="form-control" aria-describedby="emailHelp" />
+                                        </div>
+                                        <div className="mb-3">
                                             <label className="form-label">ID Laboral:</label>
                                             <input type="number" name="idLaboral" value={agenteVentas.idLaboral} onChange={handleChange} className="form-control" aria-describedby="emailHelp" />
                                         </div>

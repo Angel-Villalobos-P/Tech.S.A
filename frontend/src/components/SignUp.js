@@ -29,13 +29,13 @@ export const SignUp = () => {
     }
 
     const agregarCliente = () => {
-        // console.log(datos);
-        if (validarForm()) {
+        if (!validarForm()) {
             // clienteAxios.post('/cliente', datos)
             //     .then(response => {
             //         setRedirect(true);
             //     })
             actions.setCliente(datos);
+            setRedirect(true);
         } else {
             Swal.fire({
                 icon: 'error',
@@ -66,7 +66,7 @@ export const SignUp = () => {
                         <ul className="navbar-nav">
                             <li className="nav-item">
                                 <Link to="/ingresar">
-                                    <button type="button" className="btn btn-primary">Iniciar sesión</button>
+                                    <button type="button" className="btn btn-success">Iniciar sesión</button>
                                 </Link>
                             </li>
                             <li className="nav-item">
@@ -99,7 +99,7 @@ export const SignUp = () => {
                             </div>
                             <div className="mb-3 cedula">
                                 <label className="form-label">Cédula</label>
-                                <input type="text" name="idCliente" onChange={handleChange} className="form-control" value={datos.idCliente} />
+                                <input type="number" name="idCliente" onChange={handleChange} className="form-control" value={datos.idCliente} />
                             </div>
                             <div className="mb-3 direccion">
                                 <label className="form-label">Dirección</label>
@@ -109,7 +109,7 @@ export const SignUp = () => {
                                 <label className="form-label">Usuario</label>
                                 <input type="text" name="usuario" onChange={handleChange} className="form-control" value={datos.usuario} />
                             </div>
-                            <button type="button" className="btn btn-primary" onClick={() => agregarCliente()}>Registrarse</button>
+                            <button type="button" className="btn btn-success" onClick={() => agregarCliente()}>Registrarse</button>
                         </form>
                         {redirect ? <Redirect to="/clientepage" /> : ""}
                     </div>
