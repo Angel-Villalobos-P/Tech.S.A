@@ -31,4 +31,4 @@ const port = process.env.PORT || 4000;
 
 app.listen(port, host, () => {
     console.log(`Servidor arrancado en el puerto ${port}`);
-});  
+})
