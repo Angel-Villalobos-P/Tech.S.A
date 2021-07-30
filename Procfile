@@ -1,1 +1,1 @@
-web: '../Tech.S.A/backend/API_Techsa/server'
+web: '../Tech.S.A/backend/API_Techsa/server.js'
