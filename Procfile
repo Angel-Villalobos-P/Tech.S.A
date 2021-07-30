@@ -1,0 +1,1 @@
+web: '../Tech.S.A/backend/API_Techsa/server'
