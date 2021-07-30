@@ -8,7 +8,6 @@ require('dotenv').config({ path: 'variables.env' });
 const apiRouter = require('./routes/api');
 const app = express();
 
-
 app.use(cors());
 
 require('./db');
@@ -18,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api', apiRouter);
-app.use(express.static('../frontend/build'));
+app.use(express.static('../../frontend/build'));
 //En produccion
 // if (process.env.NODE_ENV === 'production') {
 //     app.use(express.static('/frontend/build'));
