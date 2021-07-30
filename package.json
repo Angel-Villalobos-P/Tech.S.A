@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Angel-Villalobos-P/Tech.S.A/issues"
   },
-  "homepage": "https://github.com/Angel-Villalobos-P/Tech.S.A#readme"
+  "homepage": "https://github.com/Angel-Villalobos-P/Tech.S.A#readme",
+  "devDependencies": {
+    "dotenv": "^10.0.0"
+  }
 }

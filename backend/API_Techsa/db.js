@@ -1,5 +1,7 @@
 const Sequelize = require('sequelize');
 
+require('dotenv').config({ path: 'variables.env' });
+
 const ClienteModel = require('./models/clientes');
 const UsuarioModel = require('./models/usuario');
 const CelularModel = require('./models/celular');
@@ -12,15 +14,25 @@ const ContratoInternetModel = require('./models/contratoInternet');
 const ContratoFijaModel = require('./models/contratoFija');
 const ContratoMovilModel = require('./models/contratoMovil');
 
-const sequelize = new Sequelize('techsa', 'root', 'rootangel', {
-    host: '127.0.0.1',
-    port: '3306',
+
+const sequelize = new Sequelize(process.env.DB_NOMBRE, process.env.DB_USER, process.env.DB_PASS, {
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
     dialect: 'mysql',
     define: {
         timestamps: false,
         freezeTableName: true //Evita el cambio a plural del nombre de las tablas
     }
 });
+// const sequelize = new Sequelize('techsa', 'root', 'rootangel', {
+//     host: '127.0.0.1',
+//     port: '3306',
+//     dialect: 'mysql',
+//     define: {
+//         timestamps: false,
+//         freezeTableName: true //Evita el cambio a plural del nombre de las tablas
+//     }
+// });
 
 const cliente = ClienteModel(sequelize, Sequelize);
 const usuario = UsuarioModel(sequelize, Sequelize);
