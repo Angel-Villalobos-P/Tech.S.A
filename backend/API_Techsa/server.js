@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api', apiRouter);
-
+app.use(express.static('../frontend/build'));
 //En produccion
 // if (process.env.NODE_ENV === 'production') {
 //     app.use(express.static('/frontend/build'));
