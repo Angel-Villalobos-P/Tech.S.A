@@ -1,1 +1,1 @@
-web: backend/API_Techsa/server.js
+web: node backend/API_Techsa/server.js
